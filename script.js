@@ -18,24 +18,27 @@ function generatePassword () {
 
   let passwordChar = [];
 
-  for (x=0; x<passwordLength; x++) {
-    const type = Math.floor(Math.random() * 3);
+  for (x=0; x<passwordLength; ) {
+    const type = Math.floor(Math.random() * 4);
     if (lowerCase === 'y' && type === 0) {
-      const random = Math.floor(Math.random() * 25);
+      const random = Math.floor(Math.random() * 26);
       passwordChar.push(characters.lower[random]);
+      x++;
     } else if (upperCase === 'y' && type === 1) {
-      const random = Math.floor(Math.random() * 25);
+      const random = Math.floor(Math.random() * 26);
       passwordChar.push(characters.upper[random]);
+      x++;
     } else if (numeric === 'y' && type === 2) {
-      const random = Math.floor(Math.random() * 9);
+      const random = Math.floor(Math.random() * 10);
       passwordChar.push(characters.numbers[random]);
+      x++;
     } else if (specialChar === 'y' && type === 3) {
-      const random = Math.floor(Math.random() * 30);
-      passwordChar.push(characters.letters[random]);
+      const random = Math.floor(Math.random() * 31);
+      passwordChar.push(characters.special[random]);
+      x++;
     }
   }
-  console.log(passwordChar);
-  console.log(passwordChar.join(""));
+  return(passwordChar.join(""));
 }
 
 // Write password to the #password input
